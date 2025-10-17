@@ -1,1 +1,50 @@
-<!DOCTYPE html><head><title>Pro - $9.99/mo</title><script src="https://js.stripe.com/v1/"></script><style>body{font-family:Arial;max-width:600px;margin:50px auto;text-align:center;}button{background:#635BFF;color:white;border:none;padding:15px 30px;font-size:18px;border-radius:5px;}</style></head><body><h1>Upgrade to Pro</h1><p>Unlimited agents + support.</p><p><strong>$49/month</strong></p><form id="checkout"><button>Subscribe</button></form><script>var stripe=Stripe('pk_test_51SJ2TkLfcZgKdS9LhP4YQEhSNOdCbWILyQliqNOp7XbTsI2fi576klvMQ1PI4psnqJpO57lZ1en5m5e6kfmzFz9L00KUgR1Jp7');document.getElementById('checkout').addEventListener('submit',function(e){e.preventDefault();stripe.redirectToCheckout({lineItems:[{price:'price_1SJ5TyLfcZgKdS9LAcuDUrSx',quantity:1}],mode:'subscription',successUrl:window.location.origin+'/success.html',cancelUrl:window.location.origin+'/pro.html'})});</script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pro - $9.99/mo</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        button {
+            background: #635BFF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upgrade to Pro</h1>
+    <p>Unlimited agents + support.</p>
+    <p><strong>$9.99/month</strong></p>
+    <form id="checkout">
+        <button type="submit">Subscribe</button>
+    </form>
+    <script>
+        var stripe = Stripe('pk_test_51SJ2TkLfcZgKdS9LhP4YQEhSNOdCbWILyQliqNOp7XbTsI2fi576klvMQ1PI4psnqJpO57lZ1en5m5e6kfmzFz9L00KUgR1Jp7');
+        document.getElementById('checkout').addEventListener('submit', function(e) {
+            e.preventDefault();
+            stripe.redirectToCheckout({
+                lineItems: [{
+                    price: 'price_1NEW99LfcZgKdS9LNEW9DOT99', // Replace with your $9.99 price ID from Stripe Dashboard
+                    quantity: 1
+                }],
+                mode: 'subscription',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin + '/pro.html'
+            }).then(function(result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
