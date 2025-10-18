@@ -28,13 +28,26 @@
         <button type="submit">Subscribe</button>
     </form>
     <script>
-        var stripe = Stripe('pk_test_51SJ2TkLfcZgKdS9LhP4YQEhSNOdCbWILyQliqNOp7XbTsI2fi576klvMQ1PI4psnqJpO57lZ1en5m5e6kfmzFz9L00KUgR1Jp7');
+        var stripe = Stripe('pk_live_51SJ7D5FY3gkT3VMOAh4OcA5a5Rp4qm5jP5zhZfcsQ371MGTfov9Ol9j7q9Wyddhs9ve3YkGWxisjrOTUM98t1O0m009aUSlmN9');
         document.getElementById('checkout').addEventListener('submit', function(e) {
             e.preventDefault();
             stripe.redirectToCheckout({
                 lineItems: [{
-                    price: 'price_1NEW99LfcZgKdS9LNEW9DOT99', // Replace with your $9.99 price ID from Stripe Dashboard
+                    price: 'price_1SJNOyFY3gkT3VMOeNtDzdT2', // Your live $9.99 price ID
                     quantity: 1
+                }],
+                mode: 'subscription',
+                successUrl: window.location.origin + '/success.html',
+                cancelUrl: window.location.origin + '/pro.html'
+            }).then(function(result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            });
+        });
+    </script>
+</body>
+</html>                    quantity: 1
                 }],
                 mode: 'subscription',
                 successUrl: window.location.origin + '/success.html',
