@@ -33,21 +33,8 @@
             e.preventDefault();
             stripe.redirectToCheckout({
                 lineItems: [{
-                    price: 'price_1SJNOyFY3gkT3VMOeNtDzdT2', // Your live $9.99 price ID
+                    price: 'price_1SJNOyFY3gkT3VMOeNtDzdT2',
                     quantity: 1
-                }],
-                mode: 'subscription',
-                successUrl: window.location.origin + '/success.html',
-                cancelUrl: window.location.origin + '/pro.html'
-            }).then(function(result) {
-                if (result.error) {
-                    alert(result.error.message);
-                }
-            });
-        });
-    </script>
-</body>
-</html>                    quantity: 1
                 }],
                 mode: 'subscription',
                 successUrl: window.location.origin + '/success.html',
