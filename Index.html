@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Compiler - Grok-Powered $6.5M Launch in 4 Hours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid #00FF00;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #00FF00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            color: #00FF00;
+            border: 1px solid #00FF00;
+            border-radius: 4px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem 2rem;
+            background: radial-gradient(ellipse at center, #001a00 0%, #000000 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 0, 0.03) 2px,
+                rgba(0, 255, 0, 0.03) 4px
+            );
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: #00FF00;
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(0, 255, 0, 0.5); }
+            to { text-shadow: 0 0 30px rgba(0, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.5); }
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+            font-weight: 300;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #999999;
+            line-height: 1.8;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background-color: #00FF00;
+            color: #000000;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid #00FF00;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: #00FF00;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #00FF00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #999999;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(180deg, #000000 0%, #001a00 50%, #000000 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(0, 255, 0, 0.05);
+            border: 2px solid #00FF00;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 255, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #00FF00;
+        }
+
+        .feature-card p {
+            color: #cccccc;
+            line-height: 1.7;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: #000000;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(0, 255, 0, 0.05);
+            border: 1px solid #00FF00;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: rgba(0, 255, 0, 0.08);
+            box-shadow: 0 5px 20px rgba(0, 255, 0, 0.2);
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #00FF00;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-question::before {
+            content: 'Q:';
+            margin-right: 0.8rem;
+            font-weight: 900;
+            color: #00FF00;
+        }
+
+        .faq-answer {
+            font-size: 1.05rem;
+            color: #cccccc;
+            line-height: 1.7;
+            padding-left: 2.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            border-top: 2px solid #00FF00;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer h3 {
+            color: #00FF00;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: #999999;
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: #00FF00;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">AI AGENT COMPILER</div>
+            <a href="pro.html">View Pricing →</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Grok-Powered $6.5M Launch in 4 Hours</h1>
+            <p class="tagline">The AI Agent Compiler That Builds Your Future</p>
+            <p class="description">
+                Transform ideas into intelligent AI agents at unprecedented speed. Join the revolution of developers who shipped million-dollar products before lunch. Just $9.99/month to unlock infinite possibilities.
+            </p>
+            <a href="pro.html" class="cta-button">Start Building Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Supercharge Your Development</h2>
+            <p class="section-subtitle">
+                Built for developers who refuse to compromise on speed, quality, or innovation.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Lightning-Fast AI App Builds</h3>
+                    <p>
+                        Deploy production-ready AI agents in minutes, not months. Our compiler transforms natural language into optimized, scalable applications with zero boilerplate.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Abrams Lake to Starbase Pipeline</h3>
+                    <p>
+                        Seamless deployment from concept to cosmos. Our revolutionary pipeline takes your agent from local testing to global infrastructure faster than SpaceX launches rockets.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🧠</span>
+                    <h3>Grok-Powered Intelligence</h3>
+                    <p>
+                        Harness the raw power of advanced AI models. Your agents learn, adapt, and evolve with every interaction, creating exponentially smarter solutions over time.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🔧</span>
+                    <h3>Zero-Config Auto-Scaling</h3>
+                    <p>
+                        From 10 to 10 million users without touching a config file. Our intelligent infrastructure automatically scales to meet demand while optimizing costs.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🛡️</span>
+                    <h3>Enterprise-Grade Security</h3>
+                    <p>
+                        Bank-level encryption, SOC 2 compliance, and automatic vulnerability patching. Your agents are protected by the same security that guards billion-dollar companies.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>Real-Time Analytics Dashboard</h3>
+                    <p>
+                        Monitor performance, track user behavior, and optimize conversions with actionable insights. Every metric you need to 10x your product, visualized beautifully.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">What's the refund policy?</div>
+                    <div class="faq-answer">
+                        We offer a risk-free 30-day money-back guarantee. If you're not completely satisfied with AI Agent Compiler, we'll refund your subscription—no questions asked. We're that confident you'll love it.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What exactly is an AI Agent Compiler?</div>
+                    <div class="faq-answer">
+                        Think of it as a supercharged development environment specifically designed for AI agents. Instead of writing thousands of lines of boilerplate code, you describe what you want in natural language, and our compiler generates production-ready, optimized agents that can handle complex tasks autonomously. It's like having a senior AI engineer working 24/7 on your project.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Do I need coding experience to use this?</div>
+                    <div class="faq-answer">
+                        While coding experience helps you unlock advanced features, it's not required to get started. Our intuitive interface and natural language processing allow non-technical founders to build and deploy sophisticated AI agents. However, developers will appreciate the full control and customization options available through our advanced mode.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What's included in the $9.99/month subscription?</div>
+                    <div class="faq-answer">
+                        Everything you need to build, deploy, and scale AI agents: unlimited project compilation, access to all AI models (including Grok), automatic scaling infrastructure, real-time analytics, priority support, and regular updates with new features. No hidden fees, no usage caps on compilation—just pure unlimited potential for less than your morning coffee habit.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h2 style="font-size: 2.5rem; color: #ffffff; text-shadow: none;">Ready to Build the Future?</h2>
+            <p class="description" style="font-size: 1.2rem; color: #cccccc;">
+                Join thousands of developers shipping AI agents at unprecedented speed.
+            </p>
+            <a href="pro.html" class="cta-button">Get Started for $9.99/mo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>AI Agent Compiler</h3>
+            <p>Building the future, one agent at a time.</p>
+            <div class="footer-links">
+                <div>
+                    <strong>Contact:</strong> <a href="mailto:email@example.com">email@example.com</a>
+                </div>
+                <div>
+                    <strong>Twitter:</strong> <a href="https://twitter.com/TheWestTexican" target="_blank">@TheWestTexican</a>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: #666666;">
+                © 2025 AI Agent Compiler. All rights reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+  </html>
