@@ -1,0 +1,6 @@
+spiralnet_colab.ipynb (original run)
+colab_proof.png (original screenshot)
+spiralnet_colab_recent.ipynb (recent run)
+colab_proof_recent.png (recent screenshot)
+spiralnet_v1.1.py (code file with def spiral_conv(x, order='clockwise'): ...)
+
