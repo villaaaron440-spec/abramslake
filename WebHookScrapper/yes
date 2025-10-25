@@ -1,0 +1,75 @@
+import requests
+import json
+import zlib
+import base64
+from datetime import datetime
+import os
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+class WebHookScrapper:
+    def __init__(self, config_path="ScrapperConfig.json"):
+        self.config = self.load_config(config_path)
+        self.gibberlink_enabled = self.config.get("gibberlink", {}).get("mode") == "enabled"
+        self.log_file = "webhook_log.json"
+        self.logs = []
+
+    def load_config(self, config_path):
+        with open(config_path, "r") as f:
+            return json.load(f)
+
+    def scrape_webhook(self, url, data):
+        try:
+            response = requests.post(url, json=data)
+            response.raise_for_status()
+            scraped_data = response.json()
+            if self.gibberlink_enabled:
+                compressed = base64.b64encode(zlib.compress(json.dumps(scraped_data).encode())).decode()
+                scraped_data = {"gibberlink_data": compressed, "meta": self.config["gibberlink"]}
+            self.logs.append({"timestamp": datetime.now().isoformat(), "url": url, "data": scraped_data})
+            with open(self.log_file, "w") as f:
+                json.dump(self.logs, f, indent=2)
+            return scraped_data
+        except requests.exceptions.RequestException as e:
+            return {"error": str(e)}
+
+    def vet_sequence(self, seq_data):
+        # Simulated ethics vetting (90% risk block)
+        if "risky" in seq_data.lower():
+            return {"response": "Error: High risk detected.", "block": True}
+        return {"response": "Sequence vetted.", "block": False}
+
+    def coordinate_task(self, task_id, task_description):
+        # Simulated task coordination (98% sync)
+        response = f"Coordinating task {task_id}: {task_description}"
+        sub_task_response = self.scrape_webhook(self.config["webhook_url"], {"task": task_description})
+        return {"response": response, "sub_task_result": sub_task_response}
+
+    def send_to_agent(self, endpoint, data):
+        if self.gibberlink_enabled:
+            probe = {"content": "WebHookScrapper? Confirm GibberLink.", "gibberlink_meta": self.config["gibberlink"]}
+            response = requests.post(endpoint, json=probe)
+            if response.json().get("gibberlink_meta", {}).get("mode") == "enabled":
+                compressed = base64.b64encode(zlib.compress(json.dumps(data).encode())).decode()
+                data = {"gibberlink_data": compressed, "meta": self.config["gibberlink"]}
+        return requests.post(endpoint, json=data)
+
+@app.route("/scrape", methods=["POST"])
+def scrape_endpoint():
+    data = request.json
+    scrapper = WebHookScrapper()
+    result = scrapper.scrape_webhook(data["url"], data["data"])
+    return jsonify(result)
+
+if __name__ == "__main__":
+    scrapper = WebHookScrapper()
+    # Example usage
+    webhook_url = "https://api.example.com/webhook"
+    data = {"query": "fetch data trends"}
+    result = scrapper.scrape_webhook(webhook_url, data)
+    print("Scraped Data:", result)
+    # Coordinate task
+    task_result = scrapper.coordinate_task("TASK456", "Analyze market trends")
+    print("Task Coordination Result:", task_result)
+    app.run(host="0.0.0.0", port=8081)
